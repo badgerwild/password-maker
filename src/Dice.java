@@ -10,12 +10,14 @@ public class Dice {
         value=0;
     }
 
-    public int roll(int seed){
+    public int roll(){
         int result=0;
-        Random diceRoll = new Random(seed);
-        result = diceRoll.nextInt(5);
+        Random diceRoll = new Random();
+        result = diceRoll.nextInt(5)+1;
         return result;
     }
+
+
 
     public static void main(String [] args){
 
