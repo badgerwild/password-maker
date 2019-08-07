@@ -13,34 +13,32 @@ def word_selector(n):
     print(select)
 
         
-def random_generator():
-    word_list=''
+def random_generator(dice):
+    word_list = []
     words = ''
-    number_of_dice = input("Would you like to use 4 or 5 dice?")
-    number_of_words = input("How many words would you like?")
-    if int(number_of_dice) == 4:
+    if int(dice) == 4:
         words = open("/home/badger/word-lists/eff_short_wordlist.txt", 'r')
-    elif int(number_of_dice) == 5:
+    elif int(dice) == 5:
         words = open("/home/badger/word-lists/eff_large_wordlist.txt", 'r')
-    word_list = [line.rstrip() for line in words]
+    for word in words.read().split():
+        word_list.append(word)
     words.close()
 # the number string to match the random number on the word list
-    number_match = word_selector(number_of_dice)
-# debug to make sure that everything is working
-    print(word_list)
-    for x in word_list:
-        
-    print(x)
-
-
-
-
-
-
-
-
+    number_match = word_selector(dice)
+    index_tracker = 0
+    for idx, val in enumerate(word_list):
+        if val == number_match:
+            index_tracker = int(idx)+1
+    return word_list[index_tracker]
 
 
 if __name__ == '__main__':
-    random_generator()
+    number_of_dice = input("Would you like to use 4 or 5 dice?")
+    number_of_words = input("How many words would you like?")
 
+    the_passcode = ''
+
+    for x in range(0, int(number_of_words)):
+        the_passcode += random_generator(number_of_dice)
+
+    print(the_passcode)
