@@ -1,3 +1,4 @@
+
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -21,55 +22,7 @@ import java.util.Scanner;
 
 
 public class PasswordGui extends Application {
-
-
-   private int diceNumber =4;
-   private int wordNumber=4;
-   private File wordSource= new File("/home/badger/word-lists/eff_short_wordlist.txt");
-   private Dice die = new Dice();
-   private Scanner input = new Scanner(System.in);
     TextArea output = new TextArea();
-
-    public static String pickAWord(Dice theDie, File theFile, Scanner input, int theNumberofdice, int theNumberOfWords){
-        try {
-            input = new Scanner(theFile);
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-
-        /**makes a string of the random number generated taking the number of dice into consideration**/
-
-        int wordNumber = 0;
-
-        StringBuilder multipleWord = new StringBuilder();
-        ArrayList<String> storage = new ArrayList<String>();
-        String theWord = null;
-
-        for(int i=0; i<theNumberOfWords; i++) {
-            StringBuilder sb = new StringBuilder();
-
-            for (int j = 0; j < theNumberofdice; j++) {
-                wordNumber = theDie.roll();
-                sb.append(wordNumber);
-            }
-            String holder = (sb.toString());
-           //debug  System.out.println(sb.toString());
-
-            while (input.hasNext()) {
-                storage.add(input.next());
-            }
-
-            for (String s : storage) {
-                if (s.equals(holder)) {
-                    int temp = storage.indexOf(s);
-                    theWord = storage.get(temp + 1);
-                }
-            }
-            multipleWord.append(theWord);
-        }
-        return multipleWord.toString();
-    }
-
 
     public static void main(String[] args) {
         launch(args);
