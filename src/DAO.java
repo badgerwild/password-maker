@@ -5,5 +5,5 @@ public interface DAO
      * @return the word lost based on an id
      */
 
-    public String get(int id, int[] wordId);
+    public String[] get();
 }

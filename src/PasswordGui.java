@@ -142,10 +142,11 @@ public class PasswordGui extends Application {
 //button that completes the first function
       Button generate = new Button("Generate");
 
+
       generate.setOnMouseClicked(new EventHandler<MouseEvent>() {
           @Override
           public void handle(MouseEvent event) {
-              System.out.println(pickAWord(die, wordSource, input, diceNumber, wordNumber ));
+              System.out.println(thePassword());
           }
       });
         vbox.getChildren().add(generate);
